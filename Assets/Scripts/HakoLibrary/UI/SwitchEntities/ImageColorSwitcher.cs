@@ -18,6 +18,8 @@ namespace HakoLibrary.UI
 
         private void OnEnable()
         {
+            OnSwitchStateChanged(_switch.IsOn);
+
             _switch.StateChanged += OnSwitchStateChanged;
         }
 

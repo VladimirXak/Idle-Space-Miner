@@ -113,6 +113,9 @@ namespace HakoLibrary.GoogleSheets.Editor
                 case "Localization":
                     LocalizationEditor.Rebuild(data);
                     break;
+                case "Armament":
+                    ArmamentSpreadsheet.Rebuild(data.values);
+                    break;
             }
 
             Debug.Log($"We readed the sheet [{data.sheet}]");

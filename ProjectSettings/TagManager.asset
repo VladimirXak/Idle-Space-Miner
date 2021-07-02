@@ -46,6 +46,9 @@ TagManager:
   - name: Backgound
     uniqueID: 3854204895
     locked: 0
+  - name: Tap
+    uniqueID: 1541049989
+    locked: 0
   - name: UI
     uniqueID: 911994331
     locked: 0
