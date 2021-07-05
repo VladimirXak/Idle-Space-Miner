@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using Game.Data;
 
 namespace Game
 {
@@ -11,14 +9,40 @@ namespace Game
         public GameLevel Level { get; private set; }
         public Armament Armament { get; private set; }
 
-        public GameInfo(Currency currency, GameLevel level, Armament armament)
+        public BoosterCollection Boosters { get; private set; }
+
+        private ISaveLoadSavedGame _saveLoadSavedGame;
+
+        public GameInfo(Currency currency, GameLevel level, Armament armament, BoosterCollection boosters)
         {
+            _saveLoadSavedGame = new FileSavedGame();
+
             Currency = currency;
 
             Level = level;
             Armament = armament;
 
-            Currency.Coins.Add(new ScientificNotation(1, 4));
+            Boosters = boosters;
+        }
+
+        public void SaveData()
+        {
+            SavedData savedData = GetData();
+
+            _saveLoadSavedGame.Save(savedData);
+            new FileSavedGame().Save(savedData);
+        }
+
+        private SavedData GetData()
+        {
+            return new SavedData()
+            {
+                Currency = Currency.GetData(),
+                Level = Level.GetData(),
+                Armament = Armament.GetData(),
+
+                Boosters = Boosters.GetData(),
+            };
         }
     }
 }

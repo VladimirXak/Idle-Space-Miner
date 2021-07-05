@@ -7,14 +7,17 @@ namespace Game
     {
         private IAdditive<ScientificNotation> _coins;
         private IHealth<ScientificNotation> _enemyHealth;
+        private TemporeryBooster _booster;
 
         private ScientificNotation _lastValueHealth;
 
         [Inject]
-        private void Construct(Currency currency, IHealth<ScientificNotation> enemyHealth)
+        private void Construct(Currency currency, IHealth<ScientificNotation> enemyHealth, BoosterCollection boosters)
         {
             _coins = currency.Coins;
             _enemyHealth = enemyHealth;
+
+            _booster = boosters.GetItem(BoosterType.Coin);
         }
 
         private void AddCoins(ScientificNotation value)
@@ -25,7 +28,7 @@ namespace Game
             if (countAddcoins.IsZero())
                 return;
 
-            _coins.Add(countAddcoins);
+            _coins.Add(countAddcoins * _booster.Multiplier);
         }
 
         private void ResetLastValueHealth(ScientificNotation value)

@@ -67,6 +67,9 @@ namespace Game
             if (a.IsZero())
                 return b;
 
+            if (b.IsZero())
+                return a;
+
             if (a.Order == b.Order)
                 a.Mantissa += b.Mantissa;
             else if (a.Order > b.Order)
@@ -147,6 +150,9 @@ namespace Game
 
         public static ScientificNotation operator *(ScientificNotation a, double b)
         {
+            if (a.IsZero())
+                return 0;
+
             a.Mantissa *= b;
 
             ScientificNotation v = a.Mantissa;

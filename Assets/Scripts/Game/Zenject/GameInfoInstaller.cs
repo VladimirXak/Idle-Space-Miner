@@ -15,8 +15,9 @@ namespace Game.Zenject
             List<WeaponConfig> weaponConfigs = GetWeaponConfigs();
 
             Container.Bind<Currency>().AsSingle().WithArguments(savedData.Currency);
-            Container.Bind<GameLevel>().AsSingle().WithArguments(savedData.GameLevel);
+            Container.Bind<GameLevel>().AsSingle().WithArguments(savedData.Level);
             Container.Bind<Armament>().AsSingle().WithArguments(savedData.Armament, weaponConfigs);
+            Container.Bind<BoosterCollection>().AsSingle().WithArguments(savedData.Boosters);
 
             Container.Bind<GameInfo>().AsSingle().NonLazy();
 

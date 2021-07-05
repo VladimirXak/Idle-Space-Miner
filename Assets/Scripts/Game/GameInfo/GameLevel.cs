@@ -7,7 +7,7 @@ namespace Game
     public class GameLevel : IValue<int>
     {
         public event Action<int> ValueChanged;
-        public event Action<int> LevelCompleted;
+        public event Action<int> Completed;
 
         public int MaxPassedValue { get; private set; }
 
@@ -46,7 +46,7 @@ namespace Game
 
             Value++;
 
-            LevelCompleted?.Invoke(_value);
+            Completed?.Invoke(_value);
         }
 
         public void GoToPreviousLevel()

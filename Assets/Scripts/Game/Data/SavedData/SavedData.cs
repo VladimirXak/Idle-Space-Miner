@@ -10,7 +10,9 @@ namespace Game.Data
     {
         public CurrencySavedData Currency;
 
-        public GameLevelSavedData GameLevel;
+        public GameLevelSavedData Level;
         public ArmamentSavedData Armament;
+
+        public BoosterCollectionSavedData Boosters;
     }
 }

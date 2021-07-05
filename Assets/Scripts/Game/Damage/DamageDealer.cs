@@ -29,6 +29,7 @@ namespace Game
             foreach (var weapon in _armament)
             {
                 Value += weapon.Damage;
+
                 weapon.DamageChanged += OnWeaponDamageChanged;
             }
         }
